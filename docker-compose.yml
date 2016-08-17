@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  web:
+    restart: always
+    image: hairyhenderson/hairyhenderson.ca:latest
+    labels:
+      - "traefik.port=2015"
+      - "traefik.frontend.rule=Host:hairyhenderson.ca"
+
+  frontend:
+    restart: always
+    image: traefik
+    command: |-
+      --web --docker --docker.domain=hairyhenderson.ca
+      --logLevel=DEBUG --acme --acme.email=dhenderson@gmail.com
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/null:/traefik.toml
