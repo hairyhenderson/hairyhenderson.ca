@@ -1,5 +1,4 @@
-#hairyhenderson.ca *.hairyhenderson.ca
-localhost
+hairyhenderson.ca *.hairyhenderson.ca
 tls off
 
 gzip
