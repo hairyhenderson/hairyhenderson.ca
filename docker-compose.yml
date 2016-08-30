@@ -6,7 +6,7 @@ services:
     image: hairyhenderson/hairyhenderson.ca:latest
     labels:
       - "traefik.port=2015"
-      - "traefik.frontend.rule=Host:hairyhenderson.ca"
+      - "traefik.frontend.rule=Host:hairyhenderson.ca,www.hairyhenderson.ca"
       - "traefik.tags=web"
 
   frontend:
@@ -43,7 +43,7 @@ services:
       - "KONG_PG_HOST=kongdb"
     labels:
       - "traefik.port=8000"
-      - "traefik.frontend.rule=Host:api.hairyhenderson.ca"
+      - "traefik.frontend.rule=HostRegexp:{subdomain:[a-z]+}.hairyhenderson.ca"
       - "traefik.tags=web"
     ports:
       - "127.0.0.1:8001:8001"
