@@ -7,17 +7,54 @@ services:
     labels:
       - "traefik.port=2015"
       - "traefik.frontend.rule=Host:hairyhenderson.ca"
+      - "traefik.tags=web"
 
   frontend:
     restart: always
     image: traefik
     command: |-
-      --web --docker --docker.domain=hairyhenderson.ca
-      --logLevel=DEBUG --acme --acme.email=dhenderson@gmail.com
+      --web --web.readonly
+      --docker --docker.domain=hairyhenderson.ca --docker.constraints='tag==web'
+      --logLevel=DEBUG
+      --acme --acme.email=dhenderson@gmail.com --acme.ondemand
+      --acme.entrypoint=https --acme.storageFile=/certs/acme.json
+      --acme.domains='hairyhenderson.ca,api.hairyhenderson.ca,www.hairyhenderson.ca,blog.hairyhenderson.ca'
+      --entryPoints='Name:https Address::443 TLS'
+      --entryPoints='Name:http Address::80 Redirect.EntryPoint:https'
+      --defaultentrypoints='http,https'
+    labels:
+      - "traefik.enable=false"
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /dev/null:/traefik.toml
+      - certStorage:/certs
+
+  api_gw:
+    restart: always
+    image: mashape/kong
+    links:
+      - kongdb
+    environment:
+      - "KONG_DATABASE=postgres"
+      - "KONG_PG_HOST=kongdb"
+    labels:
+      - "traefik.port=8000"
+      - "traefik.frontend.rule=Host:api.hairyhenderson.ca"
+      - "traefik.tags=web"
+    ports:
+      - "127.0.0.1:8001:8001"
+
+  kongdb:
+    restart: always
+    image: postgres:9.4
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_DB
+
+volumes:
+  certStorage:
+    driver: local
