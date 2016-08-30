@@ -15,6 +15,7 @@ WORKDIR /srv
 
 COPY Caddyfile /etc/Caddyfile
 COPY index.md /srv/index.md
+COPY *.html /srv/
 
 ENTRYPOINT ["/usr/bin/caddy"]
 CMD ["--conf", "/etc/Caddyfile"]
