@@ -1,7 +1,10 @@
-hairyhenderson.ca *.hairyhenderson.ca
+#hairyhenderson.ca *.hairyhenderson.ca
+localhost
 tls off
 
 gzip
 minify
 
-markdown /
+markdown / {
+  template blog blog.html
+}
