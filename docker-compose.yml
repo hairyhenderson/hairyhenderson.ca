@@ -17,7 +17,7 @@ services:
       --docker --docker.domain=hairyhenderson.ca --docker.constraints='tag==web'
       --logLevel=DEBUG
       --acme --acme.email=dhenderson@gmail.com --acme.ondemand
-      --acme.entrypoint=https --acme.storageFile=/certs/acme.json
+      --acme.entrypoint=https --acme.storage=/certs/acme.json
       --acme.domains='hairyhenderson.ca,api.hairyhenderson.ca,www.hairyhenderson.ca,blog.hairyhenderson.ca'
       --entryPoints='Name:https Address::443 TLS'
       --entryPoints='Name:http Address::80 Redirect.EntryPoint:https'
@@ -35,7 +35,7 @@ services:
 
   api_gw:
     restart: always
-    image: mashape/kong
+    image: kong:0.9
     links:
       - kongdb
     environment:
