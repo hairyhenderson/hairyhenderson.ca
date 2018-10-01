@@ -31,29 +31,6 @@ services:
       - /dev/null:/traefik.toml
       - certStorage:/certs
 
-  api_gw:
-    image: kong:0.10
-    depends_on:
-      - kongdb
-    environment:
-      - "KONG_DATABASE=postgres"
-      - "KONG_PG_HOST=kongdb"
-    labels:
-      - "traefik.port=8000"
-      - "traefik.frontend.rule=HostRegexp:{subdomain:[a-z]+}.hairyhenderson.ca"
-      - "traefik.tags=web"
-
-  kongdb:
-    image: postgres:9.6
-    environment:
-      - PGDATA=/var/lib/postgresql/data/pgdata
-    env_file:
-      - .env
-    volumes:
-      - pgVolume:/var/lib/postgresql/data/pgdata
-
 volumes:
   certStorage:
-    driver: local
-  pgVolume:
     driver: local
