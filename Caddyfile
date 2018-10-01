@@ -10,6 +10,6 @@ markdown / {
 
 git github.com/hairyhenderson/hairyhenderson.ca {
   path ../site/
-  then cp index.md *.html /srv/
+  then cp index.md blog.html footer.html /srv/
 	hook /webhook
 }
