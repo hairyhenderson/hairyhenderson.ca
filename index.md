@@ -9,6 +9,6 @@ template: blog
 
 Some things:
 
-- [Chuck Norris API](https://api.hairyhenderson.ca/chucknorris/random)
-- [Ron Swanson API](https://api.hairyhenderson.ca/ronswanson)
 - [My Blog (such as it is)](https://blog.hairyhenderson.ca)
+- [My Resume](https://resume.hairyhenderson.ca)
+- [Gomplate](https://gomplate.hairyhenderson.ca)
