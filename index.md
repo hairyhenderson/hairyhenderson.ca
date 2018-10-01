@@ -9,6 +9,6 @@ template: blog
 
 Some things:
 
-- [My Blog (such as it is)](https://blog.hairyhenderson.ca)
+- [My Blog](https://blog.hairyhenderson.ca)
 - [My Resume](https://resume.hairyhenderson.ca)
-- [Gomplate](https://gomplate.hairyhenderson.ca)
+- [gomplate](https://gomplate.hairyhenderson.ca)
