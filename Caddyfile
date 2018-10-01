@@ -7,3 +7,7 @@ minify
 markdown / {
   template blog blog.html
 }
+
+git git@github.com:hairyhenderson/hairyhenderson.ca {
+	hook /webhook
+}
