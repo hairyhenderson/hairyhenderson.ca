@@ -13,6 +13,8 @@ RUN curl --silent --show-error --fail --location \
 EXPOSE 80 443
 WORKDIR /srv
 
+RUN mkdir /site
+
 COPY Caddyfile /etc/Caddyfile
 COPY index.md /srv/index.md
 COPY *.html /srv/

@@ -8,8 +8,8 @@ markdown / {
   template blog blog.html
 }
 
-git git@github.com:hairyhenderson/hairyhenderson.ca {
-  path site/
-  then cp site/index.md .
+git github.com/hairyhenderson/hairyhenderson.ca {
+  path ../site/
+  then cp index.md /srv/
 	hook /webhook
 }

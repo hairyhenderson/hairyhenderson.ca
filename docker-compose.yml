@@ -7,7 +7,6 @@ services:
       - "traefik.port=2015"
       - "traefik.frontend.rule=Host:hairyhenderson.ca,www.hairyhenderson.ca"
       - "traefik.tags=web"
-    
 
   frontend:
     image: traefik:1.5-alpine
