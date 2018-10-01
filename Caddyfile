@@ -9,5 +9,7 @@ markdown / {
 }
 
 git git@github.com:hairyhenderson/hairyhenderson.ca {
+  path site/
+  then cp site/index.md .
 	hook /webhook
 }
