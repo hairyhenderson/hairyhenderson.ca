@@ -9,7 +9,7 @@ services:
       - "traefik.tags=web"
 
   frontend:
-    image: traefik:1.5-alpine
+    image: traefik:1.7-alpine
     command: |-
       --web --web.readonly
       --docker --docker.domain=hairyhenderson.ca --docker.constraints='tag==web'
