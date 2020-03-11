@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.11.3
 
 LABEL maintainer="Dave Henderson <dhenderson@gmail.com>"
 
