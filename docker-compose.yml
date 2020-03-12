@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   web:
-    image: caddy/caddy:v2.0.0-beta.15-alpine
+    image: hairyhenderson/hairyhenderson.ca:latest
     ports:
       - "80:80"
       - "443:443"

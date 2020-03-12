@@ -1,0 +1,21 @@
+name: Docker Build
+on: [push]
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    container:
+      image: hairyhenderson/dockerfiles-builder:latest
+    env:
+      DOCKER_BUILDKIT: '1'
+    steps:
+      - uses: actions/checkout@v2
+      - name: build
+        run: docker build -t hairyhenderson/hairyhenderson.ca .
+      - name: push
+        # NOTE: DOCKERHUB_TOKEN and DOCKERHUB_USERNAME must be present in https://github.com/hairyhenderson/hairyhenderson.ca/settings
+        # the user must have permission to push
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker push hairyhenderson/hairyhenderson.ca
+        if: github.repository == 'hairyhenderson/hairyhenderson.ca' && github.ref == 'refs/heads/master'
