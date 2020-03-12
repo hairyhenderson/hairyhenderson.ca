@@ -1,15 +1,5 @@
-hairyhenderson.ca *.hairyhenderson.ca
-tls off
+hairyhenderson.ca www.hairyhenderson.ca
 
-gzip
-minify
+root * /site
 
-markdown / {
-  template blog blog.html
-}
-
-git github.com/hairyhenderson/hairyhenderson.ca {
-  path ../site/
-  then cp index.md blog.html footer.html /srv/
-	hook /webhook
-}
+file_server
