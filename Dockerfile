@@ -1,4 +1,4 @@
-FROM caddy:2.3.0-alpine@sha256:fa1ae85dc9b12ee47e98d7ef21db409eada3ed48f1865e4b1f1dd78f417132fe
+FROM caddy:2.4.6-alpine@sha256:dbc76d658f90c3ce8f96d6a3ccc918d1694c586003eae68a6cf2282ce2ecf2ef
 
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY index.html /site/
